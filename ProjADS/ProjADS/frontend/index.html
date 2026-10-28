@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Property Search Using BST and AVL Trees</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="page-container">
+        <h1>Multi-Criteria Property Search Using BST and AVL Trees</h1>
+        <p class="project-tag">BTech Advanced Data Structures Semester Mini-Project</p>
+
+        <!-- Tree Status -->
+        <div class="tree-info-box">
+            <strong>Tree Status:</strong>
+            Loaded: <span id="stat-count">0</span> properties |
+            BST Height: <span id="stat-bst-height">0</span> |
+            AVL Height: <span id="stat-avl-height">0</span>
+        </div>
+
+        <hr>
+
+        <!-- 1. Search Section -->
+        <h2>1. Multi-Criteria Property Search</h2>
+        <p class="hint">The tree performs a price range search, and results are filtered by area, bedrooms, location, and type.</p>
+
+        <form id="search-form">
+            <div class="form-grid">
+                <div>
+                    <label>Min Price (₹):</label>
+                    <input type="number" id="min-price" value="5000000" step="50000">
+                </div>
+                <div>
+                    <label>Max Price (₹):</label>
+                    <input type="number" id="max-price" value="15000000" step="50000">
+                </div>
+                <div>
+                    <label>Min Area (sq.ft):</label>
+                    <input type="number" id="min-area" placeholder="Any">
+                </div>
+                <div>
+                    <label>Max Area (sq.ft):</label>
+                    <input type="number" id="max-area" placeholder="Any">
+                </div>
+                <div>
+                    <label>Bedrooms:</label>
+                    <select id="bedrooms">
+                        <option value="0">All</option>
+                        <option value="1">1 BHK</option>
+                        <option value="2">2 BHK</option>
+                        <option value="3">3 BHK</option>
+                        <option value="4">4 BHK</option>
+                        <option value="5">5 BHK</option>
+                    </select>
+                </div>
+                <div>
+                    <label>Location:</label>
+                    <select id="location">
+                        <option value="All">All</option>
+                        <option value="Andheri">Andheri</option>
+                        <option value="Bandra">Bandra</option>
+                        <option value="Goregaon">Goregaon</option>
+                        <option value="Malad">Malad</option>
+                        <option value="Borivali">Borivali</option>
+                        <option value="Powai">Powai</option>
+                        <option value="Kandivali">Kandivali</option>
+                        <option value="Vile Parle">Vile Parle</option>
+                        <option value="Ghatkopar">Ghatkopar</option>
+                        <option value="Thane">Thane</option>
+                    </select>
+                </div>
+                <div>
+                    <label>Property Type:</label>
+                    <select id="property-type">
+                        <option value="All">All</option>
+                        <option value="Apartment">Apartment</option>
+                        <option value="Villa">Villa</option>
+                        <option value="Studio">Studio</option>
+                    </select>
+                </div>
+                <div>
+                    <label>Algorithm:</label>
+                    <select id="algorithm-select">
+                        <option value="bst">Binary Search Tree (BST)</option>
+                        <option value="avl">AVL Tree</option>
+                        <option value="linear">Linear Search</option>
+                    </select>
+                </div>
+            </div>
+
+            <div style="margin-top: 10px;">
+                <button type="submit">Search Properties</button>
+                <button type="button" id="btn-reset">Reset</button>
+            </div>
+        </form>
+
+        <div id="search-time-info" class="time-info"></div>
+
+        <h3>Search Results</h3>
+        <table id="results-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Location</th>
+                    <th>Price (₹)</th>
+                    <th>Area (sq.ft)</th>
+                    <th>Bedrooms</th>
+                    <th>Type</th>
+                </tr>
+            </thead>
+            <tbody id="results-body">
+                <tr>
+                    <td colspan="6" style="text-align:center;">Click "Search Properties" to see results.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <hr>
+
+        <!-- 2. Insert and Delete -->
+        <div class="row">
+            <div class="col">
+                <h2>2. Insert Property</h2>
+                <form id="insert-form">
+                    <label>Property ID:</label>
+                    <input type="text" id="ins-id" placeholder="e.g. P1001" required>
+
+                    <label>Location:</label>
+                    <select id="ins-location">
+                        <option value="Andheri">Andheri</option>
+                        <option value="Bandra">Bandra</option>
+                        <option value="Goregaon">Goregaon</option>
+                        <option value="Malad">Malad</option>
+                        <option value="Borivali">Borivali</option>
+                        <option value="Powai">Powai</option>
+                        <option value="Kandivali">Kandivali</option>
+                        <option value="Vile Parle">Vile Parle</option>
+                        <option value="Ghatkopar">Ghatkopar</option>
+                        <option value="Thane">Thane</option>
+                    </select>
+
+                    <label>Price (₹):</label>
+                    <input type="number" id="ins-price" placeholder="e.g. 7500000" required>
+
+                    <label>Area (sq.ft):</label>
+                    <input type="number" id="ins-area" placeholder="e.g. 850" required>
+
+                    <label>Bedrooms:</label>
+                    <input type="number" id="ins-bedrooms" value="2" min="1" max="10" required>
+
+                    <label>Property Type:</label>
+                    <select id="ins-type">
+                        <option value="Apartment">Apartment</option>
+                        <option value="Villa">Villa</option>
+                        <option value="Studio">Studio</option>
+                    </select>
+
+                    <div style="margin-top: 10px;">
+                        <button type="submit">Insert Property</button>
+                    </div>
+                    <div id="ins-msg" class="msg"></div>
+                </form>
+            </div>
+
+            <div class="col">
+                <h2>3. Delete Property</h2>
+                <form id="delete-form">
+                    <label>Property ID to Delete (e.g. P00001):</label>
+                    <input type="text" id="del-id" placeholder="e.g. P00001" required>
+
+                    <div style="margin-top: 10px;">
+                        <button type="submit">Delete Property</button>
+                    </div>
+                    <div id="del-msg" class="msg"></div>
+                </form>
+            </div>
+        </div>
+
+        <hr>
+
+        <!-- 3. Performance Comparison -->
+        <h2>4. Performance Comparison</h2>
+        <p class="hint">Actual execution time measured in Java using <code>System.nanoTime()</code>.</p>
+
+        <div style="margin-bottom: 10px;">
+            <button type="button" onclick="runBenchmark(1000)">Compare with 1,000 Records</button>
+            <button type="button" onclick="runBenchmark(10000)">Compare with 10,000 Records</button>
+            <button type="button" onclick="runBenchmark(50000)">Compare with 50,000 Records</button>
+            <button type="button" onclick="runSortedExperiment()">Sorted Insertion Experiment</button>
+        </div>
+
+        <div id="benchmark-status" class="time-info"></div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Algorithm</th>
+                    <th>Records</th>
+                    <th>Build Time (ms)</th>
+                    <th>Search Time (µs)</th>
+                    <th>Range Search Time (µs)</th>
+                    <th>Tree Height</th>
+                </tr>
+            </thead>
+            <tbody id="benchmark-body">
+                <tr>
+                    <td colspan="6" style="text-align:center;">Click a compare button above.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Sorted Experiment Details -->
+        <div id="sorted-box" style="display: none; margin-top: 15px; padding: 10px; background: #f0f0f0; border: 1px solid #ccc;">
+            <strong>Sorted Insertion Experiment (1,000 items):</strong>
+            <ul>
+                <li><strong>Normal BST:</strong> Height = <span id="sort-bst-h"></span>, Search Time = <span id="sort-bst-t"></span> (Degrades to linked list)</li>
+                <li><strong>AVL Tree:</strong> Height = <span id="sort-avl-h"></span>, Search Time = <span id="sort-avl-t"></span> (Balanced via rotations)</li>
+            </ul>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

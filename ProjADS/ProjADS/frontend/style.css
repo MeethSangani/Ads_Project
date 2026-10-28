@@ -1,0 +1,160 @@
+/* Simple, clean styling suitable for a BTech mini-project */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px auto;
+    background-color: #ffffff;
+    color: #222222;
+    line-height: 1.4;
+}
+
+.page-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+h1 {
+    font-size: 22px;
+    margin-bottom: 4px;
+}
+
+.project-tag {
+    color: #555555;
+    font-size: 13px;
+    margin-top: 0;
+}
+
+h2 {
+    font-size: 17px;
+    margin-top: 18px;
+    margin-bottom: 6px;
+}
+
+h3 {
+    font-size: 15px;
+    margin-top: 14px;
+    margin-bottom: 6px;
+}
+
+.hint {
+    font-size: 13px;
+    color: #666666;
+    margin-top: 0;
+    margin-bottom: 12px;
+}
+
+.tree-info-box {
+    background-color: #f5f5f5;
+    border: 1px solid #cccccc;
+    padding: 8px 12px;
+    margin: 12px 0;
+    font-size: 14px;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #dddddd;
+    margin: 20px 0;
+}
+
+/* Forms */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+@media (max-width: 600px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+    .row {
+        flex-direction: column;
+    }
+}
+
+label {
+    display: block;
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 3px;
+    margin-top: 6px;
+}
+
+input, select {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 6px;
+    font-size: 13px;
+    border: 1px solid #999999;
+    border-radius: 2px;
+}
+
+button {
+    padding: 6px 12px;
+    font-size: 13px;
+    cursor: pointer;
+    background-color: #2b5797;
+    color: #ffffff;
+    border: 1px solid #1e3a68;
+    border-radius: 2px;
+    margin-right: 5px;
+}
+
+button:hover {
+    background-color: #1e3a68;
+}
+
+/* Two-column layout */
+.row {
+    display: flex;
+    gap: 20px;
+}
+
+.col {
+    flex: 1;
+}
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    font-size: 13px;
+}
+
+table, th, td {
+    border: 1px solid #cccccc;
+}
+
+th, td {
+    padding: 6px 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+/* Info and Feedback */
+.time-info {
+    font-size: 13px;
+    margin: 8px 0;
+    color: #006600;
+    font-weight: bold;
+}
+
+.msg {
+    margin-top: 6px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.msg.success {
+    color: #006600;
+}
+
+.msg.error {
+    color: #cc0000;
+}
